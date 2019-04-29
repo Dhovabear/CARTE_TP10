@@ -2,14 +2,9 @@ package TP10;
 
 import java.util.ArrayList;
 
-public class Carte {
 
-    public static enum Couleur{
-        TREFLE,
-        CARREAU,
-        COEUR,
-        PIQUE;
-    };
+
+public class Carte {
 
     private Valeur m_valeurDeLaCarte;
     private Couleur m_couleurDeLaCarte;

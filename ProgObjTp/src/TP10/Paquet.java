@@ -31,7 +31,7 @@ public class Paquet {
     }
 
     public Carte tirerCarteAuDessus(){
-        return null;
+        return m_contenu.pollFirst();
     }
 
     public void melanger(){
@@ -40,10 +40,11 @@ public class Paquet {
         ArrayList<Carte> tasMelanger = new ArrayList<Carte>();
 
         while (!tmp.isEmpty()){
-            int endroitOuPlacer = rng.nextInt(tasMelanger.size());
-            Carte debog = tmp.pollFirst();
-            System.out.println(debog);
-            tasMelanger.add(endroitOuPlacer, debog);
+            int endroitOuPlacer = 0;
+            if(tasMelanger.size() != 0){
+                endroitOuPlacer = rng.nextInt(tasMelanger.size());
+            }
+            tasMelanger.add(endroitOuPlacer, tmp.pollFirst());
 
         }
 
@@ -51,5 +52,16 @@ public class Paquet {
 
     }
 
-
+    @Override
+    public String toString() {
+        String result = "{";
+        for (Carte c: m_contenu){
+            result += c.toString();
+            if(c != m_contenu.getLast()){
+                result += ",";
+            }
+        }
+        result += "}";
+        return result;
+    }
 }
