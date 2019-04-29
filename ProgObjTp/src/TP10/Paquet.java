@@ -1,5 +1,7 @@
 package TP10;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -29,7 +31,7 @@ public class Paquet {
     }
 
     public Carte tirerCarteAuDessus(){
-
+        return null;
     }
 
     public void melanger(){
