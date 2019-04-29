@@ -64,4 +64,45 @@ public class Paquet {
         result += "}";
         return result;
     }
+
+    public static Paquet genererPaquetDe32Cartes(){
+        Paquet p = new Paquet();
+        p.ajouterAuDessus(new Carte(Valeur.SEPT, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.HUIT, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.NEUF, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.DIX, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.VALET, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.DAME, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.ROI, Couleur.TREFLE));
+        p.ajouterAuDessus(new Carte(Valeur.AS, Couleur.TREFLE));
+
+        p.ajouterAuDessus(new Carte(Valeur.SEPT, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.HUIT, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.NEUF, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.DIX, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.VALET, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.DAME, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.ROI, Couleur.CARREAU));
+        p.ajouterAuDessus(new Carte(Valeur.AS, Couleur.CARREAU));
+
+        p.ajouterAuDessus(new Carte(Valeur.SEPT, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.HUIT, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.NEUF, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.DIX, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.VALET, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.DAME, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.ROI, Couleur.COEUR));
+        p.ajouterAuDessus(new Carte(Valeur.AS, Couleur.COEUR));
+
+        p.ajouterAuDessus(new Carte(Valeur.SEPT, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.HUIT, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.NEUF, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.DIX, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.VALET, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.DAME, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.ROI, Couleur.PIQUE));
+        p.ajouterAuDessus(new Carte(Valeur.AS, Couleur.PIQUE));
+
+        return p;
+    }
 }

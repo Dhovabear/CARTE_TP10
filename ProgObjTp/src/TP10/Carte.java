@@ -23,6 +23,10 @@ public class Carte {
         return m_couleurDeLaCarte;
     }
 
+    public boolean estPlusFortQue(Carte c){
+        return false;
+    }
+
     @Override
     public String toString() {
         switch (m_couleurDeLaCarte){
@@ -80,4 +84,6 @@ public class Carte {
         }
         return null;
     }
+
+
 }
