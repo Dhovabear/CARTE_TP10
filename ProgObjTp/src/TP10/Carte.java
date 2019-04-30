@@ -24,6 +24,53 @@ public class Carte {
     }
 
     public boolean estPlusFortQue(Carte c){
+        switch(this.m_valeurDeLaCarte){
+            case SEPT:
+                return false;
+            case HUIT:
+                switch (c.m_valeurDeLaCarte){
+                    case SEPT: return true;
+                    default: return false;
+                }
+            case NEUF:
+                switch (c.m_valeurDeLaCarte){
+                    case SEPT: return true;
+                    case HUIT: return true;
+                    default: return false;
+                }
+            case DIX:
+                switch (c.m_valeurDeLaCarte){
+                    case SEPT: return true;
+                    case HUIT: return true;
+                    case NEUF: return true;
+                    default: return false;
+                }
+            case VALET:
+                switch (c.m_valeurDeLaCarte){
+                    case SEPT: return true;
+                    case HUIT: return true;
+                    case NEUF: return true;
+                    case DIX: return true;
+                    default: return false;
+                }
+            case DAME:
+                switch (c.m_valeurDeLaCarte){
+                    case DAME: return false;
+                    case ROI: return false;
+                    case AS: return false;
+                    default: return true;
+                }
+            case ROI:
+                switch (c.m_valeurDeLaCarte){
+                    case ROI: return false;
+                    case AS: return false;
+                    default: return true;
+                }
+            case AS:
+                if(c.m_valeurDeLaCarte == Valeur.AS)
+                    return false;
+                return true;
+        }
         return false;
     }
 
