@@ -3,8 +3,6 @@ package TP10;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class PaquetTest {
 
 
@@ -18,11 +16,9 @@ public class PaquetTest {
         testP.ajouterAuDessus(tc2);
         testP.ajouterAuDessus(tc);
 
-        Assert.assertEquals(tc , testP.tirerCarteAuDessus());
+        Assert.assertEquals(tc , testP.piocher());
     }
 
 
-    @Test
-    public void melanger() {
-    }
+
 }

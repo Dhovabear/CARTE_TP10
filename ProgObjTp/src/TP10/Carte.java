@@ -74,6 +74,10 @@ public class Carte {
         return false;
     }
 
+    public boolean estEgal(Carte c){
+        return this.m_valeurDeLaCarte == c.getValeurCarte();
+    }
+
     @Override
     public String toString() {
         switch (m_couleurDeLaCarte){

@@ -4,6 +4,7 @@ import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class Paquet {
@@ -30,8 +31,16 @@ public class Paquet {
         m_contenu.addLast(c);
     }
 
-    public Carte tirerCarteAuDessus(){
+    public Carte piocher(){
         return m_contenu.pollFirst();
+    }
+
+    public Paquet piocherPlusieursCarte(int nbr){
+        Paquet pq = new Paquet();
+        for (int i = 0 ; i < nbr ; i++){
+            pq.ajouterAuDessus(m_contenu.pollFirst());
+        }
+        return pq;
     }
 
     public void melanger(){
@@ -50,6 +59,20 @@ public class Paquet {
 
         this.m_contenu = new LinkedList<Carte>(tasMelanger);
 
+    }
+
+    public Carte getCarteAuDessus(){
+        return m_contenu.getFirst();
+    }
+
+    public boolean estVide(){
+        return m_contenu.isEmpty();
+    }
+
+    public void fusionnerAvec(Paquet paquet2){
+        while (!paquet2.estVide()){
+            this.ajouterAuDessous(paquet2.piocher());
+        }
     }
 
     @Override
