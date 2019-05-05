@@ -6,7 +6,6 @@ public class main {
     public static void main(String[] args) {
         Paquet pq = Paquet.genererPaquetDe32Cartes();
         pq.melanger();
-
         Paquet piocheJ1 = pq.piocherPlusieursCarte(16);
         Paquet piocheJ2 = pq.piocherPlusieursCarte(16);
 
