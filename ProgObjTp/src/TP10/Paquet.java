@@ -19,6 +19,10 @@ public class Paquet {
         this(new LinkedList<>());
     }
 
+    public Paquet(Paquet p){
+        this.m_contenu = (LinkedList<Carte>) p.m_contenu.clone();
+    }
+
     public Paquet(LinkedList<Carte> contenu) {
         this.m_contenu = contenu;
     }
@@ -73,6 +77,10 @@ public class Paquet {
         while (!paquet2.estVide()){
             this.ajouterAuDessous(paquet2.piocher());
         }
+    }
+
+    public int nbrCartes(){
+        return m_contenu.size();
     }
 
     @Override

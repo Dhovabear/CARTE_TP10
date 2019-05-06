@@ -1,6 +1,7 @@
 package TP10;
 
 import TP10.Graphique.CarteDraw;
+import TP10.Graphique.PaquetDraw;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,9 @@ public class mainGraph {
 
     private static Carte j1DessusTas;
     private static Carte j2DessusTas;
+
+    private static Paquet pqDevantJ1Draw;
+    private static Paquet pqDevantJ2Draw;
 
     public static void main(String[] args) {
 
@@ -43,10 +47,14 @@ public class mainGraph {
                 g.setColor(new Color(50, 100, 27));
                 g.fillRect(0,0,pan.getWidth(),pan.getHeight());
 
-                if(j1DessusTas != null && j2DessusTas != null){
+                PaquetDraw.drawPaquetRetourner(piocheJ1,40,100,pan,g);
+                PaquetDraw.drawPaquetRetourner(piocheJ2,pan.getWidth() - 200,350,pan,g);
+                if(pqDevantJ1Draw != null && pqDevantJ2Draw != null){
                     g.setColor(Color.white);
-                    CarteDraw.drawCarte(g,pan,400,50,j1DessusTas);
-                    CarteDraw.drawCarte(g,pan,400,250,j2DessusTas);
+                    //CarteDraw.drawCarte(g,pan,300,100,j1DessusTas);
+                    //CarteDraw.drawCarte(g,pan,300,350,j2DessusTas);
+                    PaquetDraw.drawPaquetFace(pqDevantJ1Draw,300,100,pan,g);
+                    PaquetDraw.drawPaquetFace(pqDevantJ2Draw,300,300,pan,g);
                 }else{
                     g.setColor(Color.green);
                     g.drawString("Appuyez sur '->' pour commencer !" ,400, 200);
@@ -69,56 +77,7 @@ public class mainGraph {
             public void keyReleased(KeyEvent e) {
                 System.out.println(e.getKeyCode());
                 if(e.getKeyCode() == 39){
-                    if(gagnant == 0){
-
-                        System.out.println("pioche J1: " + piocheJ1);
-                        System.out.println("pioche J2: " + piocheJ2 + "\n");
-
-                        if(batailleEnCours){
-                            jouerTour(tasDevantJ1, piocheJ1, tasDevantJ2, piocheJ2);
-
-                            updateCardToDraw(tasDevantJ1, tasDevantJ2);
-
-                            if(tasDevantJ1.getCarteAuDessus().estPlusFortQue(tasDevantJ2.getCarteAuDessus())){
-                                System.out.println("J1 remporte la battaille !\n");
-                                batailleEnCours = false;
-                                piocheJ1.fusionnerAvec(tasDevantJ1);
-                                piocheJ1.fusionnerAvec(tasDevantJ2);
-                            }else if(tasDevantJ2.getCarteAuDessus().estPlusFortQue(tasDevantJ1.getCarteAuDessus())){
-                                System.out.println("J2 remporte la battaille !\n");
-                                batailleEnCours = false;
-                                piocheJ2.fusionnerAvec(tasDevantJ2);
-                                piocheJ2.fusionnerAvec(tasDevantJ1);
-                            }else if(tasDevantJ1.getCarteAuDessus().estEgal(tasDevantJ2.getCarteAuDessus())){
-                                System.out.println("Cartes encores egales , la battaille continue!");
-                            }
-
-                        }else{
-                            jouerTour(tasDevantJ1, piocheJ1, tasDevantJ2, piocheJ2);
-
-                            updateCardToDraw(tasDevantJ1, tasDevantJ2);
-
-                            if(tasDevantJ1.getCarteAuDessus().estEgal(tasDevantJ2.getCarteAuDessus())){
-                                batailleEnCours = true;
-                            }else if(tasDevantJ1.getCarteAuDessus().estPlusFortQue(tasDevantJ2.getCarteAuDessus())){
-                                System.out.println("J1 remporte le tour\n");
-                                piocheJ1.fusionnerAvec(tasDevantJ1);
-                                piocheJ1.fusionnerAvec(tasDevantJ2);
-                            }else if(tasDevantJ2.getCarteAuDessus().estPlusFortQue(tasDevantJ1.getCarteAuDessus())){
-                                System.out.println("J2 remporte le tour\n");
-                                piocheJ2.fusionnerAvec(tasDevantJ2);
-                                piocheJ2.fusionnerAvec(tasDevantJ1);
-                            }
-
-                            if(piocheJ1.estVide()){
-                                gagnant = 2;
-                                System.out.println("J1 a perdu !");
-                            }else if(piocheJ2.estVide()){
-                                gagnant = 1;
-                                System.out.println("J2 a perdu !");
-                            }
-                        }
-                    }
+                    nextTurn(piocheJ1, piocheJ2, tasDevantJ1, tasDevantJ2);
                 }
             }
         };
@@ -141,6 +100,61 @@ public class mainGraph {
 
     }
 
+    private static void nextTurn(Paquet piocheJ1, Paquet piocheJ2, Paquet tasDevantJ1, Paquet tasDevantJ2) {
+        if(gagnant == 0){
+
+            if(piocheJ1.estVide()){
+                gagnant = 2;
+                System.out.println("J1 a perdu !");
+                return;
+            }else if(piocheJ2.estVide()){
+                gagnant = 1;
+                System.out.println("J2 a perdu !");
+                return;
+            }
+
+            System.out.println("pioche J1: " + piocheJ1);
+            System.out.println("pioche J2: " + piocheJ2 + "\n");
+
+            if(batailleEnCours){
+                jouerTour(tasDevantJ1, piocheJ1, tasDevantJ2, piocheJ2);
+
+                updateCardToDraw(tasDevantJ1, tasDevantJ2);
+
+                if(tasDevantJ1.getCarteAuDessus().estPlusFortQue(tasDevantJ2.getCarteAuDessus())){
+                    System.out.println("J1 remporte la battaille !\n");
+                    batailleEnCours = false;
+                    piocheJ1.fusionnerAvec(tasDevantJ1);
+                    piocheJ1.fusionnerAvec(tasDevantJ2);
+                }else if(tasDevantJ2.getCarteAuDessus().estPlusFortQue(tasDevantJ1.getCarteAuDessus())){
+                    System.out.println("J2 remporte la battaille !\n");
+                    batailleEnCours = false;
+                    piocheJ2.fusionnerAvec(tasDevantJ2);
+                    piocheJ2.fusionnerAvec(tasDevantJ1);
+                }else if(tasDevantJ1.getCarteAuDessus().estEgal(tasDevantJ2.getCarteAuDessus())){
+                    System.out.println("Cartes encores egales , la battaille continue!");
+                }
+
+            }else{
+                jouerTour(tasDevantJ1, piocheJ1, tasDevantJ2, piocheJ2);
+
+                updateCardToDraw(tasDevantJ1, tasDevantJ2);
+
+                if(tasDevantJ1.getCarteAuDessus().estEgal(tasDevantJ2.getCarteAuDessus())){
+                    batailleEnCours = true;
+                }else if(tasDevantJ1.getCarteAuDessus().estPlusFortQue(tasDevantJ2.getCarteAuDessus())){
+                    System.out.println("J1 remporte le tour\n");
+                    piocheJ1.fusionnerAvec(tasDevantJ1);
+                    piocheJ1.fusionnerAvec(tasDevantJ2);
+                }else if(tasDevantJ2.getCarteAuDessus().estPlusFortQue(tasDevantJ1.getCarteAuDessus())){
+                    System.out.println("J2 remporte le tour\n");
+                    piocheJ2.fusionnerAvec(tasDevantJ2);
+                    piocheJ2.fusionnerAvec(tasDevantJ1);
+                }
+            }
+        }
+    }
+
     private static void jouerTour(Paquet tasDevantJ1, Paquet piocheJ1, Paquet tasDevantJ2, Paquet piocheJ2) {
         tasDevantJ1.ajouterAuDessus(piocheJ1.piocher());
         System.out.println("J1 pose la carte: " + tasDevantJ1.getCarteAuDessus());
@@ -149,8 +163,10 @@ public class mainGraph {
     }
 
     private static void updateCardToDraw(Paquet tasDevantJ1, Paquet tasDevantJ2) {
-        j1DessusTas = tasDevantJ1.getCarteAuDessus();
-        j2DessusTas = tasDevantJ2.getCarteAuDessus();
+        //j1DessusTas = tasDevantJ1.getCarteAuDessus();
+        //j2DessusTas = tasDevantJ2.getCarteAuDessus();
+        pqDevantJ1Draw = new Paquet(tasDevantJ1);
+        pqDevantJ2Draw = new Paquet(tasDevantJ2);
     }
 
 
