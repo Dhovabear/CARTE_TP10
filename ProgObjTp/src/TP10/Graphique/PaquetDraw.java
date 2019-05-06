@@ -10,10 +10,12 @@ import java.io.IOException;
 public class PaquetDraw {
 
     public static Font fontCompteur;
+    public static Font fontBase;
 
     public static void loadRessources(){
         try {
             fontCompteur = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/Bubblegum.ttf").getFile())).deriveFont(35f);
+            fontBase = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/coolvetica.ttf").getFile()));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
