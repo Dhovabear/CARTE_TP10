@@ -13,7 +13,7 @@ public class JeuMainControl {
         this.m_jeu = jeu;
         m_vue = new Fenetre(jeu);
         m_vue.addKeyListener(new JeuClavierControl(jeu,m_vue));
-        m_vue.addMouseMotionListener(new jeuSourisMouvementControl());
-        m_vue.addMouseWheelListener(new jeuSourisMoletteControl());
+        m_vue.addMouseMotionListener(new jeuSourisMouvementControl(m_vue));
+        m_vue.addMouseWheelListener(new jeuSourisMoletteControl(m_vue));
     }
 }

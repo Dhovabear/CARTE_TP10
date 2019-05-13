@@ -17,43 +17,15 @@ public class EventLogDraw {
     private int x;
     private  int y;
 
-    public EventLogDraw(EventLog log , int x, int y , Fenetre fen){
+    public EventLogDraw(EventLog log , int x, int y){
         this.log = log;
         backIndex = 0;
         this.x = x;
         this.y = y;
         mouseIn = false;
 
-        fen.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
 
-            }
 
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                if(e.getX() < x+180 && e.getX() > x &&
-                   e.getY() < y && e.getY() > y-170){
-                    mouseIn = true;
-                }else{
-                    mouseIn = false;
-                }
-
-            }
-        });
-        fen.addMouseWheelListener( new MouseWheelListener() {
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent e) {
-                if(mouseIn){
-                    if(e.getWheelRotation() > 0 && backIndex > 0){
-                        backIndex --;
-                    }else if(e.getWheelRotation() < 0 && backIndex < log.getMessages().size()){
-                        backIndex ++;
-                    }
-                }
-            }
-
-        });
 
         //fen.addMouseWheelListener(mwl);
     }
@@ -69,7 +41,7 @@ public class EventLogDraw {
         g.fillRect(x,y-170 , 200,25);
 
         g.setColor(Color.black);
-        g.setFont(PaquetDraw.policeCompteur.deriveFont(19f));
+        g.setFont(PaquetDraw.defaultFont.deriveFont(18f));
 
         g.drawString("HISTORIQUE",x+10,y-150);
 
@@ -110,7 +82,19 @@ public class EventLogDraw {
         return backIndex;
     }
 
+    public int getNbrOfMessage(){
+        return log.getMessages().size();
+    }
+
     public void setBackIndex(int backIndex) {
         this.backIndex = backIndex;
+    }
+
+    public void monter(){
+        this.backIndex++;
+    }
+
+    public void descendre(){
+        this.backIndex--;
     }
 }

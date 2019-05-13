@@ -7,9 +7,11 @@ import java.awt.*;
 
 public class JeuDessin extends JPanel {
     private JeuModel m_jeu;
+    private EventLogDraw evDraw;
 
     public JeuDessin(JeuModel jeu){
         this.m_jeu = jeu;
+        this.evDraw = new EventLogDraw(jeu.getEventLog(),10,550);
         PaquetDraw.loadRessources();
         CarteDraw.loadImages();
     }
@@ -20,7 +22,12 @@ public class JeuDessin extends JPanel {
         g.fillRect(0,0,getWidth(),getHeight());
         if(!m_jeu.isJeuCommencer()){
             g.setColor(Color.green);
-            g.drawString("Appuyez sur '->' pour commencer !" ,300, 200);
+            g.setFont(PaquetDraw.policeCompteur.deriveFont(100f));
+            g.setColor(new Color(103, 205, 235));
+            g.drawString("Bataille !" ,150, 200);
+            g.setFont(PaquetDraw.defaultFont.deriveFont(20f));
+            g.drawString("appuyer sur -> pour jouer un tour",190,280);
+            g.drawString("appuyer sur fleche du bas pour jouer 10 tours",190,300);
         }else{
             if(m_jeu.getPiocheJ1Draw() != null && m_jeu.getPiocheJ2Draw() != null){
                 PaquetDraw.drawPaquetFaceCachee(m_jeu.getPiocheJ1Draw(),40,100, g, this);
@@ -35,7 +42,12 @@ public class JeuDessin extends JPanel {
 
             g.setFont(PaquetDraw.defaultFont.deriveFont(30f));
             g.drawString("Tour "+m_jeu.getNbrTour(),300,50);
+            evDraw.draw(g);
         }
 
+    }
+
+    public EventLogDraw getEvDraw() {
+        return evDraw;
     }
 }

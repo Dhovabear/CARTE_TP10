@@ -180,4 +180,8 @@ public class JeuModel {
     public int getNbrTour() {
         return m_nbrTour;
     }
+
+    public EventLog getEventLog() {
+        return chat;
+    }
 }
