@@ -137,22 +137,18 @@ public class mainGraph {
             chat.print("--tour "+nbrTour+"--");
             if(piocheJ1.estVide()){
                 gagnant = 2;
-                //System.out.println("J1 a perdu !");
                 chat.print("Partie terminée");
                 chat.print("J2 gagnant!");
                 updateCardToDraw(tasDevantJ1,tasDevantJ2,piocheJ1,piocheJ2);
                 return;
             }else if(piocheJ2.estVide()){
                 gagnant = 1;
-                //System.out.println("J2 a perdu !");
                 chat.print("Partie terminée");
                 chat.print("J1 gagnant!");
                 updateCardToDraw(tasDevantJ1,tasDevantJ2,piocheJ1,piocheJ2);
                 return;
             }
 
-            //System.out.println("pioche J1: " + piocheJ1);
-            //System.out.println("pioche J2: " + piocheJ2 + "\n");
 
             if(batailleEnCours){
                 jouerTour(tasDevantJ1, piocheJ1, tasDevantJ2, piocheJ2);
@@ -160,7 +156,6 @@ public class mainGraph {
                 updateCardToDraw(tasDevantJ1, tasDevantJ2 , piocheJ1 , piocheJ2);
 
                 if(tasDevantJ1.getCarteAuDessus().estPlusFortQue(tasDevantJ2.getCarteAuDessus())){
-                    //System.out.println("J1 remporte la battaille !\n");
                     chat.print("J1 remporte la battaille");
                     chat.print("et gagne " + (tasDevantJ1.nbrCartes() + tasDevantJ2.nbrCartes()) + " cartes");
                     chat.print("");
@@ -168,7 +163,6 @@ public class mainGraph {
                     piocheJ1.fusionnerAvec(tasDevantJ1);
                     piocheJ1.fusionnerAvec(tasDevantJ2);
                 }else if(tasDevantJ2.getCarteAuDessus().estPlusFortQue(tasDevantJ1.getCarteAuDessus())){
-                    //System.out.println("J2 remporte la battaille !\n");
                     chat.print("J2 remporte la battaille");
                     chat.print("et gagne " + (tasDevantJ1.nbrCartes() + tasDevantJ2.nbrCartes()) + " cartes");
                     chat.print("");
@@ -176,7 +170,6 @@ public class mainGraph {
                     piocheJ2.fusionnerAvec(tasDevantJ2);
                     piocheJ2.fusionnerAvec(tasDevantJ1);
                 }else if(tasDevantJ1.getCarteAuDessus().estEgal(tasDevantJ2.getCarteAuDessus())){
-                    //System.out.println("Cartes encores egales , la battaille continue!");
                     chat.print("la battaille continue");
                     chat.print("");
                 }
