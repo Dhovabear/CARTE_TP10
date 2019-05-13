@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class PaquetDraw {
 
-    private static Font policeCompteur;
+    public static Font policeCompteur;
     public static  Font defaultFont;
 
     public static void loadRessources(){
         try {
-            policeCompteur = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/Bubblegum.ttf").toString()));
-            defaultFont = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/coolvetica.ttf").toString()));
+            policeCompteur = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/Bubblegum.ttf").getFile())).deriveFont(35f);
+            defaultFont = Font.createFont(Font.TRUETYPE_FONT,new File(PaquetDraw.class.getResource("/Font/coolvetica.ttf").getFile()));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {

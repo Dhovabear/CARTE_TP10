@@ -2,6 +2,7 @@ package Model;
 
 import Other.EventLog;
 import Other.Paquet;
+import View.PaquetDraw;
 
 public class JeuModel {
 
@@ -24,7 +25,15 @@ public class JeuModel {
     private EventLog chat;
 
     public JeuModel(){
+        Paquet pq = Paquet.genererPaquetDe32Cartes();
+        pq.melanger();
+        m_piocheJ1 = pq.piocherPlusieursCartes(16);
+        m_piocheJ2 = pq.piocherPlusieursCartes(16);
 
+        m_tasDevantJ1 = new Paquet();
+        m_tasDevantJ2 = new Paquet();
+
+        chat = new EventLog();
     }
 
     public void nextTurn(){
@@ -138,5 +147,37 @@ public class JeuModel {
         m_tasDevantJ1.ajouterAuDessus(m_piocheJ1.piocher());
         m_tasDevantJ2.ajouterAuDessus(m_piocheJ2.piocher());
 
+    }
+
+    public Paquet getPqDevantJ1Draw() {
+        return m_pqDevantJ1Draw;
+    }
+
+    public Paquet getM_pqDevantJ2Draw() {
+        return m_pqDevantJ2Draw;
+    }
+
+    public Paquet getPiocheJ1Draw() {
+        return m_piocheJ1Draw;
+    }
+
+    public Paquet getPiocheJ2Draw() {
+        return m_piocheJ2Draw;
+    }
+
+    public Paquet getTasDevantJ2() {
+        return m_tasDevantJ2;
+    }
+
+    public Paquet getPiocheJ2() {
+        return m_piocheJ2;
+    }
+
+    public boolean isJeuCommencer() {
+        return m_jeuCommencer;
+    }
+
+    public int getNbrTour() {
+        return m_nbrTour;
     }
 }
