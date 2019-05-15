@@ -4,6 +4,22 @@ import Other.EventLog;
 import Other.Paquet;
 import View.PaquetDraw;
 
+/**
+ * JeuModel joue le r&ocirc;le du model (car le programme est concu dans une architecture MVC)
+ * Le jeu g&egrave;re les deux joueurs , leurs cartes , etc...
+ * Le jeu se pr&eacute;pare a la construction du mod&egrave;le et se d&eacute;roule en utilisant la fonction nextTurn() ( qui comme son nom l'indique va jouer un tour).
+ * Les &eacute;v&egrave;nements du jeu seront enregistr&eacute;s dans un historique qui permetra de consulter les &eacute;venements de la partie.
+ *
+ * Cette classe contients des variables accessible via des Getters, ces variables servent a la vue
+ * qui va pouvoir savoir quelle sont les derni&egrave;res cartes jou&eacute;es. Ceci est n&eacute;cessaire car a la fin d'un tour les cartes sont remise dans les paquets
+ * (suivant le r&eacute;sultat du tour bien sur) et donc quand la vue voulais voir les cartes jou&eacute;es ce tour , elles n'existaits d&eacute;ja plus, d'o&ugrave; ces variables
+ * temporaires.
+ *
+ * @see View.Fenetre
+ * @see EventLog
+ * @see Paquet
+ * @see Other.Carte
+ */
 public class JeuModel {
 
     private  boolean m_batailleEnCours;
@@ -36,6 +52,10 @@ public class JeuModel {
         chat = new EventLog();
     }
 
+    /**
+     * Fonction qui va jouer le prochain tour.
+     * note: elle ne fera plus rien si le jeu est termin&eacute;.
+     */
     public void nextTurn(){
         m_jeuCommencer = true;
 
@@ -180,22 +200,23 @@ public class JeuModel {
         return m_piocheJ2Draw;
     }
 
-    public Paquet getTasDevantJ2() {
-        return m_tasDevantJ2;
-    }
-
-    public Paquet getPiocheJ2() {
-        return m_piocheJ2;
-    }
-
+    /**
+     * @return L'&eacute;tat de la partie (si elle est en cours ou non)
+     */
     public boolean isJeuCommencer() {
         return m_jeuCommencer;
     }
 
+    /**
+     * @return Nombre de tours jou&eacute;s depuis le d&eacute;but de la partie.
+     */
     public int getNbrTour() {
         return m_nbrTour;
     }
 
+    /**
+     * @return L'historique de la partie
+     */
     public EventLog getEventLog() {
         return chat;
     }

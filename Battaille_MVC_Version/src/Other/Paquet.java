@@ -3,6 +3,15 @@ package Other;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/**
+ * Paquet est la classe qui va contenir une ou plusieurs cartes.
+ * Elle se compose d'une LinkedList de Cartes car ceci facilite l'action de piocher et convient
+ * mieux a la situation.
+ *
+ * @see LinkedList
+ * @see Carte
+ * @see View.PaquetDraw
+ */
 public class Paquet {
 
     private LinkedList<Carte> m_contenu;
@@ -21,6 +30,10 @@ public class Paquet {
     }
 
 
+    /**
+     * Fonction statique qui va g&eacute;nerer un paquet de 32 cartes
+     * @return paquet de 32 cartes
+     */
     public static Paquet genererPaquetDe32Cartes(){
         Paquet p = new Paquet();
         p.ajouterAuDessus(new Carte(Couleur.TREFLE,Valeur.SEPT,0));
@@ -61,6 +74,7 @@ public class Paquet {
         return p;
     }
 
+
     public void ajouterAuDessus(Carte c){
         m_contenu.addFirst(c);
     }
@@ -69,10 +83,19 @@ public class Paquet {
         m_contenu.addLast(c);
     }
 
+    /**
+     * Retourne et retire la carte en haut de la pioche
+     * @return premi&egrave;re carte de la pioche
+     */
     public Carte piocher(){
         return m_contenu.pollFirst();
     }
 
+    /**
+     * Permet de piocher plusieurs cartes a la fois
+     * @param nbr la quantit&eacute;e de carte a piocher
+     * @return paquet qui contient les n cartes pioch&eacute;es
+     */
     public Paquet piocherPlusieursCartes(int nbr){
         Paquet p = new Paquet();
         for (int i = 0; i < nbr ; i++){
@@ -97,6 +120,11 @@ public class Paquet {
         return m_contenu.isEmpty();
     }
 
+    /**
+     * Fonction qui fusionne le paquet courant avec le paquet pass&eacute; en param&egrave;tre
+     * la fusion s'effectue en ajoutant le paquet pass&eacute; en param&egrave;tre au dessous du paquet courant.
+     * @param paquet2
+     */
     public void fusionnerAvec(Paquet paquet2) {
         while (!paquet2.estVide()){
             this.ajouterAuDessous(paquet2.piocher());

@@ -6,11 +6,19 @@ import View.Fenetre;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
-public class jeuSourisMouvementControl implements MouseMotionListener {
+/**
+ * JeuSourisMouvementControl est la classe qui va g&eacute;rer les entr&eacute;es du mouvement de la souris.
+ * Elle sert notament a verifi&eacute; la position de la souris pour faire fonctionner l'historique de la partie.
+ *
+ * @see MouseMotionListener
+ * @see EventLogDraw
+ * @see Other.EventLog
+ */
+public class JeuSourisMouvementControl implements MouseMotionListener {
 
     private Fenetre m_vue;
 
-    public jeuSourisMouvementControl(Fenetre vue){
+    public JeuSourisMouvementControl(Fenetre vue){
         this.m_vue = vue;
     }
 

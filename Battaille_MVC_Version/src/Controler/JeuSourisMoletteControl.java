@@ -6,11 +6,19 @@ import View.Fenetre;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-public class jeuSourisMoletteControl implements MouseWheelListener {
+/**
+ * JeuSourisMoletteControl est la classe qui va g&eacute;rer les entr&eacute;es de la molette de la souris.
+ * Elle sert uniquement a faire fonctionner l'historique de la partie.
+ *
+ * @see MouseWheelListener
+ * @see EventLogDraw
+ * @see Other.EventLog
+ */
+public class JeuSourisMoletteControl implements MouseWheelListener {
 
     private Fenetre m_vue;
 
-    public jeuSourisMoletteControl(Fenetre vue) {
+    public JeuSourisMoletteControl(Fenetre vue) {
         this.m_vue = vue;
     }
 

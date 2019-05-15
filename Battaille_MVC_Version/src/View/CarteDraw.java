@@ -10,10 +10,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Classe qui va se charger de la vue des cartes.
+ * @see Carte
+ */
 public class CarteDraw {
     private static BufferedImage[] imgIndex;
     private static BufferedImage dosCarte;
 
+    /**
+     * Fonction tr&eacute;s importante qui va charger les images &eacute;ssentiels au programme
+     * @throws IOException
+     */
     public static void loadImages() {
         imgIndex = new BufferedImage[32];
         try {
@@ -59,10 +67,25 @@ public class CarteDraw {
         }
     }
 
+    /**
+     * Dessine une carte face cachée aux positions x,y passée en paramètres
+     * @param x
+     * @param y
+     * @param g contexte graphique (Graphics)
+     * @param p Jpannel
+     */
     public static void drawCarteFaceCachee(int x , int y , Graphics g , JPanel p){
         g.drawImage(dosCarte,x,y,p);
     }
 
+    /**
+     * Dessine la carte passée en paramètre aux positions x, y
+     * @param c carte a dessiner
+     * @param x
+     * @param y
+     * @param g contexte graphique
+     * @param p JPanel
+     */
     public static void drawCarte(Carte c , int x , int y , Graphics g , JPanel p){
         g.drawImage(imgIndex[c.getImageId()],x,y,p);
     }
