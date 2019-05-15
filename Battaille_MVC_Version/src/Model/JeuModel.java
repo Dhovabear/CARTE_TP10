@@ -76,26 +76,34 @@ public class JeuModel {
 
                 chat.print("J1 remporte la bataille");
                 chat.print("et gagne " + (m_tasDevantJ1.getNbrCartes() + m_tasDevantJ2.getNbrCartes()) + " cartes");
-                chat.print("");
+
 
                 m_batailleEnCours = false;
 
                 m_piocheJ1.fusionnerAvec(m_tasDevantJ1);
                 m_piocheJ1.fusionnerAvec(m_tasDevantJ2);
 
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
+                chat.print("");
+
+
             }else if(m_tasDevantJ2.getCarteAuDessus().estPlusFortQue(m_tasDevantJ1.getCarteAuDessus())){
 
                 chat.print("J2 remporte la bataille");
                 chat.print("et gagne " + (m_tasDevantJ1.getNbrCartes() + m_tasDevantJ2.getNbrCartes()) + " cartes");
-                chat.print("");
+
 
                 m_batailleEnCours = false;
 
                 m_piocheJ2.fusionnerAvec(m_tasDevantJ2);
                 m_piocheJ2.fusionnerAvec(m_tasDevantJ1);
 
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
+                chat.print("");
+
             }else{
                 chat.print("la bataille continue");
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
                 chat.print("");
             }
         }else{
@@ -107,25 +115,32 @@ public class JeuModel {
 
                 chat.print("J1 remporte le tour");
                 chat.print("et gagne " + (m_tasDevantJ1.getNbrCartes() + m_tasDevantJ2.getNbrCartes()) + " cartes");
-                chat.print("");
+
 
                 m_piocheJ1.fusionnerAvec(m_tasDevantJ1);
                 m_piocheJ1.fusionnerAvec(m_tasDevantJ2);
+
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
+                chat.print("");
+
 
             }else if(m_tasDevantJ2.getCarteAuDessus().estPlusFortQue(m_tasDevantJ1.getCarteAuDessus())){
 
                 chat.print("J2 remporte le tour");
                 chat.print("et gagne " + (m_tasDevantJ1.getNbrCartes() + m_tasDevantJ2.getNbrCartes()) + " cartes");
-                chat.print("");
 
                 m_piocheJ2.fusionnerAvec(m_tasDevantJ2);
                 m_piocheJ2.fusionnerAvec(m_tasDevantJ1);
+
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
+                chat.print("");
 
             }else{
 
                 m_batailleEnCours = true;
 
                 chat.print("bataille!");
+                chat.print("J1  :   " + m_piocheJ1.getNbrCartes() + "   |   J2  :   " + m_piocheJ2.getNbrCartes());
                 chat.print("");
             }
         }
@@ -153,7 +168,7 @@ public class JeuModel {
         return m_pqDevantJ1Draw;
     }
 
-    public Paquet getM_pqDevantJ2Draw() {
+    public Paquet getPqDevantJ2Draw() {
         return m_pqDevantJ2Draw;
     }
 

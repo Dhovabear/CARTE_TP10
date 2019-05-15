@@ -34,10 +34,10 @@ public class JeuDessin extends JPanel {
                 PaquetDraw.drawPaquetFaceCachee(m_jeu.getPiocheJ2Draw(),getWidth() - 200,350, g, this);
             }
 
-            if(m_jeu.getPqDevantJ1Draw() != null && m_jeu.getM_pqDevantJ2Draw() != null){
+            if(m_jeu.getPqDevantJ1Draw() != null && m_jeu.getPqDevantJ2Draw() != null){
                 g.setColor(Color.white);
                 PaquetDraw.drawPaquetFaceVisible(m_jeu.getPqDevantJ1Draw(),300,100, g, this);
-                PaquetDraw.drawPaquetFaceVisible(m_jeu.getM_pqDevantJ2Draw(),300,300, g, this);
+                PaquetDraw.drawPaquetFaceVisible(m_jeu.getPqDevantJ2Draw(),300,300, g, this);
             }
 
             g.setFont(PaquetDraw.defaultFont.deriveFont(30f));
