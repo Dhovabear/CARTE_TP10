@@ -16,4 +16,8 @@ public class Node {
     public boolean named(String name) {
         return name.equals(m_name);
     }
+
+    public String getName() {
+        return m_name;
+    }
 }

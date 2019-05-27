@@ -50,6 +50,30 @@ public class Graph {
          return edglist;
     }
 
+    public ArrayList<Edge> getEdges(Node n){
+        ArrayList<Edge> edglist = new ArrayList<Edge>();
+        for ( Edge e: m_edges) {
+            if(e.linkedTo(n.getName())){edglist.add(e);}
+        }
+        return edglist;
+    }
+
+    public void removeEdges(Edge[] edgesToRemove){
+        for ( Edge e: edgesToRemove) {
+            m_edges.remove(e);
+        }
+    }
+
+    public void removeEdge(Edge e){
+        m_edges.remove(e);
+    }
+
+    public void removeNode(Node n){
+        ArrayList<Edge> aSuppr = getEdgesLinkedTo(n.getName());
+        for (Edge e: aSuppr) {
+            removeEdge(e);
+        }
+    }
 
     public ArrayList<Edge> getEdges() {
         return m_edges;
